@@ -1,20 +1,17 @@
-import React from "react";
-
-export default function Option({ questions, dispatch, answer }) {
-  const hasAnswer = answer !== null;
+export default function Option({ question, dispatch, answer }) {
   return (
     <div className="options">
-      {questions.options.map((option, index) => (
+      {question.options.map((option, index) => (
         <button
+          key={index}
           className={`btn btn-option ${index === answer ? "answer" : ""} ${
-            hasAnswer
-              ? index === questions.correctOption
+            answer !== null
+              ? index === question.correctOption
                 ? "correct"
                 : "wrong"
               : ""
           }`}
-          key={option}
-          disabled={hasAnswer}
+          disabled={answer !== null}
           onClick={() => dispatch({ type: "newAnswer", payload: index })}
         >
           {option}

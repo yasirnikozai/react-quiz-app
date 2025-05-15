@@ -15,7 +15,7 @@ export default function Finished({ points, maxPoints, highscore }) {
         <span>{emoji}</span>You scored {points} out of {maxPoints} (
         {Math.ceil(percentage)}%)
       </p>
-      <p className="highscore">High Score: {highscore} points</p>
+
       <button className="btn btn-ui" onClick={() => window.location.reload()}>
         Restart Quiz
       </button>

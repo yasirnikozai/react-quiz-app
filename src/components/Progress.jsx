@@ -1,20 +1,22 @@
 import React from "react";
 
 export default function Progress({
-  index,
-  numQuestions,
-  points,
-  maxPoints,
-  answer,
+  index = 0,
+  numQuestions = 0,
+  points = 0,
+  maxPoints = 0,
+  answer = null,
 }) {
+  const safeValue = numQuestions > 0 ? index + Number(answer !== null) : 0;
+
   return (
     <header className="progress">
-      <progress max={numQuestions} value={index + Number(answer !== null)} />
+      <progress max={numQuestions > 0 ? numQuestions : 1} value={safeValue} />
       <p>
-        Question <strong>{index + 1}</strong>/ {numQuestions}
+        Question <strong>{index + 1}</strong> / {numQuestions}
       </p>
       <p>
-        {points}/{maxPoints}
+        {points} / {maxPoints}
       </p>
     </header>
   );
